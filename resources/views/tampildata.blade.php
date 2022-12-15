@@ -39,7 +39,7 @@
         <li class="nav-item">
     <h1 class="text-center mb-4">Tabungan</h1>
     <div class="container">
-    <form action="{{ route('money', $data->id) }}" method="post">
+    <form action="{{ route('updatedata', $data->id) }}" method="POST">
         @csrf
     <div class="row">
         <div class="col">
@@ -53,19 +53,19 @@
         <div class="col">Rayon:
             <select class="form-control mt-2" name="rayon" id="rayon" value="{{ $data->region }}">
                 @for ($i = 1; $i <= 3; $i++)
-                <option>Cibedug {{ $i }}</option>
+                <option @if($data->rayon == 'Cibedug '.$i) {{ 'selected' }} @endif>Cibedug {{ $i }}</option>
                 @endfor
                 @for ($i = 1; $i <= 5; $i++)
-                <option>Ciawi {{ $i }}</option>
+                <option @if($data->rayon == 'Ciawi '.$i) {{ 'selected' }} @endif>Ciawi {{ $i }}</option>
                 @endfor
                 @for ($i = 1; $i <= 7; $i++)
-                <option>Cicurug {{ $i }}</option>
+                <option @if($data->rayon == 'Cicurug '.$i) {{ 'selected' }} @endif>Cicurug {{ $i }}</option>
                 @endfor
                 @for ($i = 1; $i <= 6; $i++)
-                <option>Cisarua {{ $i }}</option>
+                <option @if($data->rayon == 'Cisarua '.$i) {{ 'selected' }} @endif>Cisarua {{ $i }}</option>
                 @endfor
                 @for ($i = 1; $i <= 5; $i++)
-                <option>Tajur {{ $i }}</option>
+                <option @if($data->rayon == 'tajur '.$i) {{ 'selected' }} @endif>Tajur {{ $i }}</option>
                 @endfor
             </select>
         </div>
@@ -73,10 +73,10 @@
             <label for="">Uang</label>
                <input type="text" class="form-control" placeholder="your money" name="uang" value="{{ $data->uang }}">
            </div>
-           <div class="col">Rayon:
-            <select class="form-control mt-2" name="rayon" id="rayon" value="{{ $data->region }}">
+           <div class="col">action:
+            <select class="form-control mt-2" name="action" id="action">
                 <option value="add">Add Money</option>
-                <option value="Take">Take Money</option>
+                <option value="take">Take Money</option>
             </select>
         </div>
         <br>
